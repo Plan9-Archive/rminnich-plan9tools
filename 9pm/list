@@ -1,0 +1,2 @@
+#!/bin/rc
+hget http://9grid.net/rminnich/src/package/list

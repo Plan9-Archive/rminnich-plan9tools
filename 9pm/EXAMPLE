@@ -1,0 +1,1432 @@
+term% cd package
+term% ls
+deps
+get
+install
+list
+term% acme install
+term% mkdir install
+mkdir: install already exists
+term% pwd
+/usr/rminnich/package
+term% mkdir installed
+term% bind -a . /
+term% ./install hg
+package is hg
+z bz2 openssl python
+"You are missing this file: hg"
+"You are missing this file: z"
+"You are missing this file: bz2"
+"You are missing this file: openssl"
+"You are missing this file: python"
+"you had missing files: rerun get hg"
+term% get hg
+package is hg
+. /rc/lib/rcmain deps hg
+flag p
+finit
+flag i
+. deps hg
+hget http://9grid.net/rminnich/src/package/deps/hg
+exit ''
+z bz2 openssl python
+"GET hg"
+1024 1103180
+190897 1103180
+343473 1103180
+463281 1103180
+638385 1103180
+767409 1103180
+919985 1103180
+"GET z"
+1024 92941
+8543 92941
+"GET bz2"
+1024 53803
+"GET openssl"
+1024 4626173
+99972 4626173
+205444 4626173
+308868 4626173
+405124 4626173
+507524 4626173
+618116 4626173
+718468 4626173
+799364 4626173
+889476 4626173
+992900 4626173
+1110660 4626173
+1212036 4626173
+1313412 4626173
+1441412 4626173
+1616516 4626173
+1714820 4626173
+1810052 4626173
+1928836 4626173
+2040452 4626173
+2213508 4626173
+2325124 4626173
+2453124 4626173
+2634372 4626173
+2757252 4626173
+2939524 4626173
+3050116 4626173
+3178116 4626173
+3309188 4626173
+3425924 4626173
+3519108 4626173
+3626628 4626173
+3777156 4626173
+3893892 4626173
+4025988 4626173
+4164228 4626173
+4283012 4626173
+4400772 4626173
+4514436 4626173
+"GET python"
+1024 10739416
+265283 10739416
+471107 10739416
+670787 10739416
+868419 10739416
+1174595 10739416
+1496131 10739416
+1622083 10739416
+1715267 10739416
+1805379 10739416
+1891395 10739416
+1969219 10739416
+2041923 10739416
+2246723 10739416
+2380867 10739416
+2513987 10739416
+2666563 10739416
+2847811 10739416
+2959427 10739416
+3055683 10739416
+3167299 10739416
+3340355 10739416
+3475523 10739416
+3635267 10739416
+3781699 10739416
+3945539 10739416
+4167747 10739416
+4328515 10739416
+4465731 10739416
+4615235 10739416
+4757571 10739416
+4940867 10739416
+5065795 10739416
+5278787 10739416
+5379139 10739416
+5506115 10739416
+5634115 10739416
+5753923 10739416
+6016067 10739416
+6192195 10739416
+6353987 10739416
+6449219 10739416
+6585411 10739416
+6691907 10739416
+6880323 10739416
+7006275 10739416
+7141443 10739416
+7302211 10739416
+7439427 10739416
+7602243 10739416
+7768131 10739416
+7938115 10739416
+8116291 10739416
+8245315 10739416
+8363075 10739416
+8482883 10739416
+8603715 10739416
+8891459 10739416
+9145411 10739416
+9277507 10739416
+9428035 10739416
+9584707 10739416
+9918531 10739416
+10020931 10739416
+10147907 10739416
+10286147 10739416
+10463299 10739416
+10593347 10739416
+term% lc
+bz2.iso		get			install		list		python.iso
+deps		hg.iso		installed	openssl.iso	z.iso
+term% rc -x install hg
+. /rc/lib/rcmain install hg
+flag p
+finit
+flag i
+. install hg
+echo package is hg
+package is hg
+rc deps hg
+echo z bz2 openssl python
+z bz2 openssl python
+test -f hg.iso
+test -f z.iso
+test -f bz2.iso
+test -f openssl.iso
+test -f python.iso
+9660srv -f hg.iso hg
+9660srv 142: serving /srv/hg
+mount /srv/hg /n/hg
+dircp /n/hg/root /
+touch /installed/hg
+9660srv -f z.iso z
+9660srv 150: serving /srv/z
+mount /srv/z /n/z
+dircp /n/z/root /
+touch /installed/z
+9660srv -f bz2.iso bz2
+9660srv 160: serving /srv/bz2
+mount /srv/bz2 /n/bz2
+dircp /n/bz2/root /
+touch /installed/bz2
+9660srv -f openssl.iso openssl
+9660srv 168: serving /srv/openssl
+mount /srv/openssl /n/openssl
+dircp /n/openssl/root /
+touch /installed/openssl
+9660srv -f python.iso python
+9660srv 177: serving /srv/python
+mount /srv/python /n/python
+dircp /n/python/root /
+touch /installed/python
+exit ''
+term% ls /installed
+/installed/bz2
+/installed/hg
+/installed/openssl
+/installed/python
+/installed/z
+term% acme install
+term% ./install hg
+package is hg
+z bz2 openssl python
+"Package hg already installed
+no: '/bin/no' file does not exist
+"Package z already installed
+no: '/bin/no' file does not exist
+"Package bz2 already installed
+no: '/bin/no' file does not exist
+"Package openssl already installed
+no: '/bin/no' file does not exist
+"Package python already installed
+no: '/bin/no' file does not exist
+9660srv 220: /srv/hg: '/srv/hg' srv file already exists
+term% acme install
+term% rc -x install
+. /rc/lib/rcmain install
+flag p
+finit
+flag i
+. install
+echo package is
+package is
+rc deps
+rc: null list in concatenation
+echo
+
+9660srv -f "".iso ""
+9660srv 319: serving /srv/""
+mount /srv/"" /n/""
+mount: mount /n/"": file does not exist
+dircp /n/""/root /
+Can't cd /n/""/root: '/n/""/root' does not exist
+tar: EOF reading archive: seek on a stream
+touch /installed/""
+exit ''
+term% rc -x install hg
+. /rc/lib/rcmain install hg
+flag p
+finit
+flag i
+. install hg
+echo package is hg
+package is hg
+rc deps hg
+echo z bz2 openssl python
+z bz2 openssl python
+test -f /installed/hg
+echo "Package hg already installed
+"Package hg already installed
+no need to do it"
+no: '/bin/no' file does not exist
+test -f /installed/z
+echo "Package z already installed
+"Package z already installed
+no need to do it"
+no: '/bin/no' file does not exist
+test -f /installed/bz2
+echo "Package bz2 already installed
+"Package bz2 already installed
+no need to do it"
+no: '/bin/no' file does not exist
+test -f /installed/openssl
+echo "Package openssl already installed
+"Package openssl already installed
+no need to do it"
+no: '/bin/no' file does not exist
+test -f /installed/python
+echo "Package python already installed
+"Package python already installed
+no need to do it"
+no: '/bin/no' file does not exist
+9660srv -f hg.iso hg
+9660srv 348: /srv/hg: '/srv/hg' srv file already exists
+mount /srv/hg /n/hg
+dircp /n/hg/root /
+touch /installed/hg
+9660srv -f "".iso ""
+9660srv 355: /srv/"": '/srv/""' srv file already exists
+mount /srv/"" /n/""
+mount: mount /n/"": file does not exist
+dircp /n/""/root /
+Can't cd /n/""/root: '/n/""/root' does not exist
+tar: EOF reading archive: seek on a stream
+touch /installed/""
+exit ''
+term% acme install
+term% rc -x install hg
+. /rc/lib/rcmain install hg
+flag p
+finit
+flag i
+. install hg
+echo package is hg
+package is hg
+rc deps hg
+echo z bz2 openssl python
+z bz2 openssl python
+test -f /installed/hg
+echo "Package hg already installed, no need to do it"
+"Package hg already installed, no need to do it"
+test -f /installed/z
+echo "Package z already installed, no need to do it"
+"Package z already installed, no need to do it"
+test -f /installed/bz2
+echo "Package bz2 already installed, no need to do it"
+"Package bz2 already installed, no need to do it"
+test -f /installed/openssl
+echo "Package openssl already installed, no need to do it"
+"Package openssl already installed, no need to do it"
+test -f /installed/python
+echo "Package python already installed, no need to do it"
+"Package python already installed, no need to do it"
+9660srv -f hg.iso hg
+9660srv 385: /srv/hg: '/srv/hg' srv file already exists
+mount /srv/hg /n/hg
+dircp /n/hg/root /
+touch /installed/hg
+9660srv -f "".iso ""
+9660srv 392: /srv/"": '/srv/""' srv file already exists
+mount /srv/"" /n/""
+mount: mount /n/"": file does not exist
+dircp /n/""/root /
+Can't cd /n/""/root: '/n/""/root' does not exist
+tar: EOF reading archive: seek on a stream
+touch /installed/""
+exit ''
+term% acme install
+term% rc -x install
+. /rc/lib/rcmain install
+flag p
+finit
+flag i
+. install
+echo package is
+package is
+rc deps
+rc: null list in concatenation
+echo
+
+9660srv -f "".iso ""
+9660srv 410: /srv/"": '/srv/""' srv file already exists
+mount /srv/"" /n/""
+mount: mount /n/"": file does not exist
+dircp /n/""/root /
+Can't cd /n/""/root: '/n/""/root' does not exist
+tar: EOF reading archive: seek on a stream
+touch /installed/""
+exit ''
+term% rc -x install hg
+. /rc/lib/rcmain install hg
+flag p
+finit
+flag i
+. install hg
+echo package is hg
+package is hg
+rc deps hg
+echo z bz2 openssl python
+z bz2 openssl python
+test -f /installed/z
+echo "Package z already installed, no need to do it"
+"Package z already installed, no need to do it"
+test -f /installed/bz2
+echo "Package bz2 already installed, no need to do it"
+"Package bz2 already installed, no need to do it"
+test -f /installed/openssl
+echo "Package openssl already installed, no need to do it"
+"Package openssl already installed, no need to do it"
+test -f /installed/python
+echo "Package python already installed, no need to do it"
+"Package python already installed, no need to do it"
+test -f /installed/hg
+echo "Package hg already installed, no need to do it"
+"Package hg already installed, no need to do it"
+9660srv -f "".iso ""
+9660srv 433: /srv/"": '/srv/""' srv file already exists
+mount /srv/"" /n/""
+mount: mount /n/"": file does not exist
+dircp /n/""/root /
+Can't cd /n/""/root: '/n/""/root' does not exist
+tar: EOF reading archive: seek on a stream
+touch /installed/""
+exit ''
+term% acme install
+term% rc -x install hg
+. /rc/lib/rcmain install hg
+flag p
+finit
+flag i
+. install hg
+echo package is hg
+package is hg
+rc deps hg
+rc: install:8: syntax error
+exit 'syntax error'
+term% acme install
+term% rc -x install hg
+. /rc/lib/rcmain install hg
+flag p
+finit
+flag i
+. install hg
+echo package is hg
+package is hg
+rc deps hg
+echo z bz2 openssl python
+z bz2 openssl python
+test -f /installed/z
+echo "Package z already installed, no need to do it"
+"Package z already installed, no need to do it"
+test -f /installed/bz2
+echo "Package bz2 already installed, no need to do it"
+"Package bz2 already installed, no need to do it"
+test -f /installed/openssl
+echo "Package openssl already installed, no need to do it"
+"Package openssl already installed, no need to do it"
+test -f /installed/python
+echo "Package python already installed, no need to do it"
+"Package python already installed, no need to do it"
+test -f /installed/hg
+echo "Package hg already installed, no need to do it"
+"Package hg already installed, no need to do it"
+9660srv -f .iso ''
+9660srv 475: /srv/: '/srv/' create without DMDIR
+mount /srv/ /n/
+mount: can't open /srv/: '/srv/' file is a directory
+dircp /n//root /
+touch /installed/
+exit ''
+term% acme install
+term% rc -x install hg
+. /rc/lib/rcmain install hg
+flag p
+finit
+flag i
+. install hg
+echo package is hg
+package is hg
+rc deps hg
+rc: install:8: token '{': syntax error
+exit 'syntax error'
+term% man rc
+
+     RC(1)                                                       RC(1)
+
+     NAME
+          rc, cd, eval, exec, exit, flag, rfork, shift, wait, whatis,
+          ., ~ - command language
+
+     SYNOPSIS
+          rc [ -srdiIlxepvV ] [ -c command ] [ -m initial ] [ file [
+          arg ... ]]
+
+     DESCRIPTION
+          Rc is the Plan 9 shell.  It executes command lines read from
+          a terminal or a file or, with the -c flag, from rc's argu-
+          ment list.
+
+        Command Lines
+          A command line is a sequence of commands, separated by
+          ampersands or semicolons (& or ;), terminated by a newline.
+          The commands are executed in sequence from left to right.
+          Rc does not wait for a command followed by & to finish exe-
+          cuting before starting the following command.  Whenever a
+          command followed by & is executed, its process id is
+          assigned to the rc variable $apid.  Whenever a command not
+          followed by & exits or is terminated, the rc variable
+          $status gets the process's wait message (see wait(2)); it
+          will be the null string if the command was successful.
+
+          A long command line may be continued on subsequent lines by
+          typing a backslash (\) followed by a newline.  This sequence
+          is treated as though it were a blank.  Backslash is not oth-
+          erwise a special character.
+
+          A number-sign (#) and any following characters up to (but
+          not including) the next newline are ignored, except in quo-
+          tation marks.
+
+        Simple Commands
+          A simple command is a sequence of arguments interspersed
+          with I/O redirections.  If the first argument is the name of
+          an rc function or of one of rc's built-in commands, it is
+          executed by rc. Otherwise if the name starts with a slash
+          (/), it must be the path name of the program to be executed.
+          Names containing no initial slash are searched for in a list
+          of directory names stored in $path.  The first executable
+          file of the given name found in a directory in $path is the
+          program to be executed.  To be executable, the user must
+          have execute permission (see stat(2)) and the file must be
+          either an executable binary for the current machine's CPU
+          type, or a shell script.  Shell scripts begin with a line
+          containing the full path name of a shell (usually /bin/rc),
+          prefixed by `#!'.
+
+          The first word of a simple command cannot be a keyword
+          unless it is quoted or otherwise disguised.  The keywords
+          are
+               for in while if not switch fn ~ ! @
+
+        Arguments and Variables
+          A number of constructions may be used where rc's syntax
+          requires an argument to appear.  In many cases a
+          construction's value will be a list of arguments rather than
+          a single string.
+
+          The simplest kind of argument is the unquoted word: a
+          sequence of one or more characters none of which is a blank,
+          tab, newline, or any of the following:
+               # ; & | ^ $ = ` ' { } ( ) < >
+          An unquoted word that contains any of the characters * ? [
+          is a pattern for matching against file names.  The character
+          * matches any sequence of characters, ? matches any single
+          character, and [class] matches any character in the class.
+          If the first character of class is ~, the class is comple-
+          mented.  The class may also contain pairs of characters sep-
+          arated by -, standing for all characters lexically between
+          the two.  The character / must appear explicitly in a pat-
+          tern, as must the first character of the path name compo-
+          nents . and ...  A pattern is replaced by a list of argu-
+          ments, one for each path name matched, except that a pattern
+          matching no names is not replaced by the empty list, but
+          rather stands for itself.  Pattern matching is done after
+          all other operations.  Thus,
+               x=/tmp echo $x^/*.c
+          matches /tmp/*.c, rather than matching /*.c and then prefix-
+          ing /tmp.
+
+          A quoted word is a sequence of characters surrounded by sin-
+          gle quotes (').  A single quote is represented in a quoted
+          word by a pair of quotes ('').
+
+          Each of the following is an argument.
+          (arguments)
+               The value of a sequence of arguments enclosed in paren-
+               theses is a list comprising the members of each element
+               of the sequence.  Argument lists have no recursive
+               structure, although their syntax may suggest it.  The
+               following are entirely equivalent:
+                    echo hi there everybody
+                    ((echo) (hi there) everybody)
+          $argument
+          $argument(subscript)
+               The argument after the $ is the name of a variable
+               whose value is substituted.  Multiple levels of indi-
+               rection are possible, but of questionable utility.
+               Variable values are lists of strings.  If argument is a
+               number n, the value is the nth element of $*, unless $*
+               doesn't have n elements, in which case the value is
+               empty.  If argument is followed by a parenthesized list
+               of subscripts, the value substituted is a list composed
+               of the requested elements (origin 1).  The parenthesis
+               must follow the variable name with no spaces.  Assign-
+               ments to variables are described below.
+          $#argument
+               The value is the number of elements in the named vari-
+               able.  A variable never assigned a value has zero ele-
+               ments.
+          $"argument
+               The value is a single string containing the components
+               of the named variable separated by spaces.  A variable
+               with zero elements yields the empty string.
+          `{command}
+               rc executes the command and reads its standard output,
+               splitting it into a list of arguments, using characters
+               in $ifs as separators.  If $ifs is not otherwise set,
+               its value is ' \t\n'.
+          <{command}
+          >{command}
+               The command is executed asynchronously with its stan-
+               dard output or standard input connected to a pipe.  The
+               value of the argument is the name of a file referring
+               to the other end of the pipe.  This allows the con-
+               struction of non-linear pipelines.  For example, the
+               following runs two commands old and new and uses cmp to
+               compare their outputs
+                    cmp <{old} <{new}
+          argument^argument
+               The ^ operator concatenates its two operands.  If the
+               two operands have the same number of components, they
+               are concatenated pairwise.  If not, then one operand
+               must have one component, and the other must be non-
+               empty, and concatenation is distributive.
+
+        Free Carets
+          In most circumstances, rc will insert the ^ operator auto-
+          matically between words that are not separated by white
+          space.  Whenever one of $ ' ` follows a quoted or unquoted
+          word or an unquoted word follows a quoted word with no
+          intervening blanks or tabs, a ^ is inserted between the two.
+          If an unquoted word immediately follows a $ and contains a
+          character other than an alphanumeric, underscore, or *, a ^
+          is inserted before the first such character.  Thus
+
+               cc -$flags $stem.c
+
+          is equivalent to
+
+               cc -^$flags $stem^.c
+
+        I/O Redirections
+          The sequence >file redirects the standard output file (file
+          descriptor 1, normally the terminal) to the named file;
+          >>file appends standard output to the file.  The standard
+          input file (file descriptor 0, also normally the terminal)
+          may be redirected from a file by the sequence <file, or from
+          an inline `here document' by the sequence <<eof-marker.  The
+          contents of a here document are lines of text taken from the
+          command input stream up to a line containing nothing but the
+          eof-marker, which may be either a quoted or unquoted word.
+          If eof-marker is unquoted, variable names of the form $word
+          have their values substituted from rc's environment.  If
+          $word is followed by a caret (^), the caret is deleted.  If
+          eof-marker is quoted, no substitution occurs.  The standard
+          input file may also be redirected from a file by the
+          sequence <>file, which opens file exactly once, for reading
+          and writing.
+
+          Redirections may be applied to a file-descriptor other than
+          standard input or output by qualifying the redirection oper-
+          ator with a number in square brackets.  For example, the
+          diagnostic output (file descriptor 2) may be redirected by
+          writing cc junk.c >[2]junk.
+
+          A file descriptor may be redirected to an already open
+          descriptor by writing >[fd0=fd1], <>[fd0=fd1], or
+          <[fd0=fd1].  Fd1 is a previously opened file descriptor and
+          fd0 becomes a new copy (in the sense of dup(2)) of it.  A
+          file descriptor may be closed by writing >[fd0=] or <[fd0=].
+
+          Redirections are executed from left to right.  Therefore, cc
+          junk.c >/dev/null >[2=1] and cc junk.c >[2=1] >/dev/null
+          have different effects: the first puts standard output in
+          /dev/null and then puts diagnostic output in the same place,
+          where the second directs diagnostic output to the terminal
+          and sends standard output to /dev/null.
+
+          newconn <>/net/tcp/clone >[1=0] opens /net/tcp/clone exactly
+          once for reading and writing and puts it on standard input
+          and output.  lpd <>[3]/net/tcp/42/data opens
+          /net/tcp/42/data exactly once for reading and writing and
+          puts it on file descriptor 3.
+
+        Compound Commands
+          A pair of commands separated by a pipe operator (|) is a
+          command.  The standard output of the left command is sent
+          through a pipe to the standard input of the right command.
+          The pipe operator may be decorated to use different file
+          descriptors.  |[fd] connects the output end of the pipe to
+          file descriptor fd rather than 1.  |[fd0=fd1] connects out-
+          put to fd1 of the left command and input to fd0 of the right
+          command.
+
+          A pair of commands separated by && or || is a command.  In
+          either case, the left command is executed and its exit sta-
+          tus examined.  If the operator is && the right command is
+          executed if the left command's status is null.  || causes
+          the right command to be executed if the left command's sta-
+          tus is non-null.
+
+          The exit status of a command may be inverted (non-null is
+          changed to null, null is changed to non-null) by preceding
+          it with a !.
+
+          The | operator has highest precedence, and is left-
+          associative (i.e. binds tighter to the left than the right).
+          ! has intermediate precedence, and && and || have the lowest
+          precedence.
+
+          The unary @ operator, with precedence equal to !, causes its
+          operand to be executed in a subshell.
+
+          Each of the following is a command.
+          if ( list ) command
+               A list is a sequence of commands, separated by &, ;, or
+               newline.  It is executed and if its exit status is
+               null, the command is executed.
+          if not command
+               The immediately preceding command must have been
+               if(list) command. If its condition was non-zero, the
+               command is executed.
+          for(name in arguments) command
+          for(name) command
+               The command is executed once for each argument with
+               that argument assigned to name. If the argument list is
+               omitted, $* is used.
+          while(list) command
+               The list is executed repeatedly until its exit status
+               is non-null.  Each time it returns null status, the
+               command is executed.  An empty list is taken to give
+               null status.
+          switch(argument){list}
+               The list is searched for simple commands beginning with
+               the word case.  (The search is only at the `top level'
+               of the list. That is, cases in nested constructs are
+               not found.)  Argument is matched against each word fol-
+               lowing case using the pattern-matching algorithm
+               described above, except that / and the first characters
+               of . and .. need not be matched explicitly.  When a
+               match is found, commands in the list are executed up to
+               the next following case command (at the top level) or
+               the closing brace.
+          {list}
+               Braces serve to alter the grouping of commands implied
+               by operator priorities.  The body is a sequence of com-
+               mands separated by &, ;, or newline.
+          fn name{list}
+          fn name
+               The first form defines a function with the given name.
+               Subsequently, whenever a command whose first argument
+               is name is encountered, the current value of the
+               remainder of the command's argument list will be
+               assigned to $*, after saving its current value, and rc
+               will execute the list. The second form removes name's
+               function definition.
+          fn note{list}
+          fn note
+               A function with a special name will be called when rc
+               receives a corresponding note; see notify(2). The valid
+               note names (and corresponding notes) are sighup
+               (hangup), sigint (interrupt), sigalrm (alarm), and
+               sigfpe (floating point trap).  By default rc exits on
+               receiving any signal, except when run interactively, in
+               which case interrupts and quits normally cause rc to
+               stop whatever it's doing and start reading a new com-
+               mand.  The second form causes rc to handle a signal in
+               the default manner.  Rc recognizes an artificial note,
+               sigexit, which occurs when rc is about to finish exe-
+               cuting.
+          name=argument command
+               Any command may be preceded by a sequence of assign-
+               ments interspersed with redirections.  The assignments
+               remain in effect until the end of the command, unless
+               the command is empty (i.e. the assignments stand
+               alone), in which case they are effective until
+               rescinded by later assignments.
+
+        Built-in Commands
+          These commands are executed internally by rc, usually
+          because their execution changes or depends on rc's internal
+          state.
+          . file ...
+               Execute commands from file. $* is set for the duration
+               to the remainder of the argument list following file.
+               File is searched for using $path.
+          builtin command ...
+               Execute command as usual except that any function named
+               command is ignored in favor of the built-in meaning.
+          cd [dir]
+               Change the current directory to dir. The default argu-
+               ment is $home.  dir is searched for in each of the
+               directories mentioned in $cdpath.
+          eval [arg ...]
+               The arguments are concatenated separated by spaces into
+               a single string, read as input to rc, and executed.
+          exec [command ...]
+               This instance of rc replaces itself with the given
+               (non-built-in) command.
+          flag f [+-]
+               Either set (+), clear (-), or test (neither + nor -)
+               the flag f, where f is a single character, one of the
+               command line flags (see Invocation, below).
+          exit [status]
+               Exit with the given exit status.  If none is given, the
+               current value of $status is used.
+          rfork [nNeEsfFm]
+               Become a new process group using rfork(flags) where
+               flags is composed of the bitwise OR of the rfork flags
+               specified by the option letters (see fork(2)). If no
+               flags are given, they default to ens.  The flags and
+               their meanings are: n is RFNAMEG; N is RFCNAMEG; e is
+               RFENVG; E is RFCENVG; s is RFNOTEG; f is RFFDG; F is
+               RFCFDG; and m is RFNOMNT.
+          shift [n]
+               Delete the first n (default 1) elements of $*.
+          wait [pid]
+               Wait for the process with the given pid to exit.  If no
+               pid is given, all outstanding processes are waited for.
+          whatis name ...
+               Print the value of each name in a form suitable for
+               input to rc. The output is an assignment to any vari-
+               able, the definition of any function, a call to builtin
+               for any built-in command, or the completed pathname of
+               any executable file.
+          ~ subject pattern ...
+               The subject is matched against each pattern in
+               sequence.  If it matches any pattern, $status is set to
+               zero.  Otherwise, $status is set to one.  Patterns are
+               the same as for file name matching, except that / and
+               the first character of . and .. need not be matched
+               explicitly.  The patterns are not subjected to file
+               name matching before the ~ command is executed, so they
+               need not be enclosed in quotation marks.
+
+        Environment
+          The environment is a list of strings made available to exe-
+          cuting binaries by the env device (see env(3)). Rc creates
+          an environment entry for each variable whose value is non-
+          empty, and for each function.  The string for a variable
+          entry has the variable's name followed by = and its value.
+          If the value has more than one component, these are sepa-
+          rated by ctrl-a ('\001') characters.  The string for a func-
+          tion is just the rc input that defines the function.  The
+          name of a function in the environment is the function name
+          preceded by `fn#'.
+
+          When rc starts executing it reads variable and function def-
+          initions from its environment.
+
+        Special Variables
+          The following variables are set or used by rc.
+          $*       Set to rc's argument list during initialization.
+                   Whenever a . command or a function is executed, the
+                   current value is saved and $* receives the new
+                   argument list.  The saved value is restored on com-
+                   pletion of the . or function.
+          $apid    Whenever a process is started asynchronously with
+                   &, $apid is set to its process id.
+          $home    The default directory for cd.
+          $ifs     The input field separators used in backquote sub-
+                   stitutions.  If $ifs is not set in rc's environ-
+                   ment, it is initialized to blank, tab and newline.
+          $path    The search path used to find commands and input
+                   files for the . command.  If not set in the envi-
+                   ronment, it is initialized by path=(. /bin).  Its
+                   use is discouraged; instead use bind(1) to build a
+                   /bin containing what's needed.
+          $pid     Set during initialization to rc's process id.
+          $prompt  When rc is run interactively, the first component
+                   of $prompt is printed before reading each command.
+                   The second component is printed whenever a newline
+                   is typed and more lines are required to complete
+                   the command.  If not set in the environment, it is
+                   initialized by prompt=('% ' ' ').
+          $status  Set to the wait message of the last-executed pro-
+                   gram.  (unless started with &).  ! and ~ also
+                   change $status.  Its value is used to control exe-
+                   cution in &&, ||, if and while commands.  When rc
+                   exits at end-of-file of its input or on executing
+                   an exit command with no argument, $status is its
+                   exit status.
+
+        Invocation
+          If rc is started with no arguments it reads commands from
+          standard input.  Otherwise its first non-flag argument is
+          the name of a file from which to read commands (but see -c
+          below).  Subsequent arguments become the initial value of
+          $*.  Rc accepts the following command-line flags.
+          -c string  Commands are read from string.
+          -s         Print out exit status after any command where the
+                     status is non-null.
+          -e         Exit if $status is non-null after executing a
+                     simple command.
+          -i         If -i is present, or rc is given no arguments and
+                     its standard input is a terminal, it runs inter-
+                     actively.  Commands are prompted for using
+                     $prompt.
+          -I         Makes sure rc is not run interactively.
+          -l         If -l is given or the first character of argument
+                     zero is -, rc reads commands from
+                     $home/lib/profile, if it exists, before reading
+                     its normal input.
+          -m         Read commands to initialize rc from initial
+                     instead of from /rc/lib/rcmain.
+          -p         A no-op.
+          -d         A no-op.
+          -v         Echo input on file descriptor 2 as it is read.
+          -x         Print each simple command before executing it.
+          -r         Print debugging information (internal form of
+                     commands as they are executed).
+
+     SOURCE
+          /sys/src/cmd/rc
+
+     SEE ALSO
+          Tom Duff, ``Rc - The Plan 9 Shell''.
+
+     BUGS
+          There should be a way to match patterns against whole lists
+          rather than just single strings.
+
+          Using ~ to check the value of $status changes $status.
+
+          Functions containing here documents don't work.
+
+          Free carets don't get inserted next to keywords.
+
+term% 
+term% acme install
+term% rc -x install hg
+. /rc/lib/rcmain install hg
+flag p
+finit
+flag i
+. install hg
+echo package is hg
+package is hg
+rc deps hg
+echo z bz2 openssl python
+z bz2 openssl python
+test -f /installed/z
+echo "Package z already installed, no need to do it"
+"Package z already installed, no need to do it"
+test -f /installed/bz2
+echo "Package bz2 already installed, no need to do it"
+"Package bz2 already installed, no need to do it"
+test -f /installed/openssl
+echo "Package openssl already installed, no need to do it"
+"Package openssl already installed, no need to do it"
+test -f /installed/python
+echo "Package python already installed, no need to do it"
+"Package python already installed, no need to do it"
+test -f /installed/hg
+echo "Package hg already installed, no need to do it"
+"Package hg already installed, no need to do it"
+exit 'no match'
+term% acme install
+term% acme install
+term% rx -x install hg
+usage: rx [-e] [-T] [-r] [-k keypattern] [-l user] net!host command...
+term% rc -x install hg
+. /rc/lib/rcmain install hg
+flag p
+finit
+flag i
+. install hg
+echo package is hg
+package is hg
+rc deps hg
+echo z bz2 openssl python
+z bz2 openssl python
+test -f /installed/z
+echo "Package z already installed, no need to do it"
+"Package z already installed, no need to do it"
+test -f /installed/bz2
+echo "Package bz2 already installed, no need to do it"
+"Package bz2 already installed, no need to do it"
+test -f /installed/openssl
+echo "Package openssl already installed, no need to do it"
+"Package openssl already installed, no need to do it"
+test -f /installed/python
+echo "Package python already installed, no need to do it"
+"Package python already installed, no need to do it"
+test -f /installed/hg
+echo "Package hg already installed, no need to do it"
+"Package hg already installed, no need to do it"
+echo "w d " 0
+"w d " 0
+exit 'no match'
+term% acme install
+term% ./list
+4th
+8169
+82563
+9load-e820
+9win
+X11
+abaco
+aoe
+aoetools
+atazz
+awk
+breakout
+bz2
+cec
+cfront
+cifs
+code2000
+contrib
+cpuid
+curses
+cvs
+cvsfs
+cyberbit
+diff3
+drawvars
+etherm10g
+expat
+find
+fis
+freefont
+freetype
+fs
+g
+geo
+graphviz
+gsvn
+health
+hg
+histogram
+hubfs
+icons
+indent
+iosrv
+iwhois
+jbig
+jpeg
+klondike
+lcms
+ldtrace
+limbo
+m4
+magick
+mail2fs
+mails
+mines
+mkmk
+mkpass
+mkptypes
+mothra
+mpage
+mysqlfs
+ncpfs
+nd
+ndbrequery
+ndbtozone
+nupas
+nvram
+openssh
+openssl
+oui
+palatino
+pci
+perl
+png
+poll
+posix-man
+pppdec
+pptfs
+python
+radar
+rchistclnt
+rchistory
+refer
+regex
+replica
+requery
+rtf2txt
+scheme
+sd
+seft
+smart
+snake
+snmpfs
+spf
+spline
+sqlite3
+srch
+suggest
+syslogdsr
+tags
+target
+tcl
+tex
+tidy
+tiff
+tmac.pm
+ttf2subf
+unifdef
+vblade
+vera
+vim
+wchar
+webphoto
+wintop
+xml2
+yuk
+z
+zonefresh
+term% deps webphoto
+term% get webphoto
+package is webphoto
+. /rc/lib/rcmain deps webphoto
+flag p
+finit
+flag i
+. deps webphoto
+hget http://9grid.net/rminnich/src/package/deps/webphoto
+exit ''
+
+"GET webphoto"
+1024 164931
+117606 164931
+term% install webphoto
+package is webphoto
+
+webphoto": '/bin/webphoto"' file does not exist
+9660srv 853: /srv/"": '/srv/""' srv file already exists
+mount: mount /n/"": file does not exist
+Can't cd /n/""/root: '/n/""/root' does not exist
+tar: EOF reading archive: seek on a stream
+FINIS
+term% acme install
+term% rc install webphoto
+package is webphoto
+
+webphoto": '/bin/webphoto"' file does not exist
+1 
+9660srv 878: /srv/: '/srv/' create without DMDIR
+mount: can't open /srv/: '/srv/' file is a directory
+FINIS
+term% acme install
+term% acme install
+term% rc install webphoto
+package is webphoto
+
+rc: install:19: token '{': syntax error
+term% acme install
+term% rc install webphoto
+package is webphoto
+
+doit WAS 
+webphoto: '/bin/webphoto' file does not exist
+doit IS 
+1 
+9660srv 925: /srv/: '/srv/' create without DMDIR
+mount: can't open /srv/: '/srv/' file is a directory
+FINIS
+term% acme install
+term% list
+4th
+8169
+82563
+9load-e820
+9win
+X11
+abaco
+aoe
+aoetools
+atazz
+awk
+breakout
+bz2
+cec
+cfront
+cifs
+code2000
+contrib
+cpuid
+curses
+cvs
+cvsfs
+cyberbit
+diff3
+drawvars
+etherm10g
+expat
+find
+fis
+freefont
+freetype
+fs
+g
+geo
+graphviz
+gsvn
+health
+hg
+histogram
+hubfs
+icons
+indent
+iosrv
+iwhois
+jbig
+jpeg
+klondike
+lcms
+ldtrace
+limbo
+m4
+magick
+mail2fs
+mails
+mines
+mkmk
+mkpass
+mkptypes
+mothra
+mpage
+mysqlfs
+ncpfs
+nd
+ndbrequery
+ndbtozone
+nupas
+nvram
+openssh
+openssl
+oui
+palatino
+pci
+perl
+png
+poll
+posix-man
+pppdec
+pptfs
+python
+radar
+rchistclnt
+rchistory
+refer
+regex
+replica
+requery
+rtf2txt
+scheme
+sd
+seft
+smart
+snake
+snmpfs
+spf
+spline
+sqlite3
+srch
+suggest
+syslogdsr
+tags
+target
+tcl
+tex
+tidy
+tiff
+tmac.pm
+ttf2subf
+unifdef
+vblade
+vera
+vim
+wchar
+webphoto
+wintop
+xml2
+yuk
+z
+zonefresh
+term% deps vim
+term% deps tiff
+z
+term% get tiff
+package is tiff
+. /rc/lib/rcmain deps tiff
+flag p
+finit
+flag i
+. deps tiff
+hget http://9grid.net/rminnich/src/package/deps/tiff
+exit ''
+z
+"GET tiff"
+1024 675050
+181011 675050
+338707 675050
+474899 675050
+631571 675050
+"GET z"
+1024 92941
+13947 92941
+term% install tiff
+package is tiff
+Package z already installed, no need to do it
+9660srv 1151: serving /srv/tiff
+FINIS
+term% tiff
+tiff: '/bin/tiff' file does not exist
+term% install tiff
+package is tiff
+Package z already installed, no need to do it
+Package tiff already installed, no need to do it
+FINIS
+term% ls /installed
+/installed/""
+/installed/bz2
+/installed/hg
+/installed/openssl
+/installed/python
+/installed/tiff
+/installed/webphoto
+/installed/z
+term% rm /installed/\"\"
+rm: /installed/\"\": '/installed/\"\"' does not exist
+term% rm /installed/""
+term% ls /installed
+/installed/bz2
+/installed/hg
+/installed/openssl
+/installed/python
+/installed/tiff
+/installed/webphoto
+/installed/z
+term% cp /dev/text EXAMPLE
+term% time list
+4th
+8169
+82563
+9load-e820
+9win
+X11
+abaco
+aoe
+aoetools
+atazz
+awk
+breakout
+bz2
+cec
+cfront
+cifs
+code2000
+contrib
+cpuid
+curses
+cvs
+cvsfs
+cyberbit
+diff3
+drawvars
+etherm10g
+expat
+find
+fis
+freefont
+freetype
+fs
+g
+geo
+graphviz
+gsvn
+health
+hg
+histogram
+hubfs
+icons
+indent
+iosrv
+iwhois
+jbig
+jpeg
+klondike
+lcms
+ldtrace
+limbo
+m4
+magick
+mail2fs
+mails
+mines
+mkmk
+mkpass
+mkptypes
+mothra
+mpage
+mysqlfs
+ncpfs
+nd
+ndbrequery
+ndbtozone
+nupas
+nvram
+openssh
+openssl
+oui
+palatino
+pci
+perl
+png
+poll
+posix-man
+pppdec
+pptfs
+python
+radar
+rchistclnt
+rchistory
+refer
+regex
+replica
+requery
+rtf2txt
+scheme
+sd
+seft
+smart
+snake
+snmpfs
+spf
+spline
+sqlite3
+srch
+suggest
+syslogdsr
+tags
+target
+tcl
+tex
+tidy
+tiff
+tmac.pm
+ttf2subf
+unifdef
+vblade
+vera
+vim
+wchar
+webphoto
+wintop
+xml2
+yuk
+z
+zonefresh
+0.00u 0.00s 0.11r 	 list
+term% time deps hg
+z
+bz2
+openssl
+python
+0.00u 0.00s 0.10r 	 deps hg
+term% cp /dev/text EXAMPLE
+cp: can't create EXAMPLE: 'EXAMPLE' Permission denied
+term% ls -l EXAMPLE
+--r-------- M 2 rminnich rminnich 38856 May 14 19:15 EXAMPLE
+term% rm EXAMPLE
+term% cp /dev/text EXAMPLE

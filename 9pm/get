@@ -1,0 +1,14 @@
+#!/bin/rc
+
+echo package is $1
+
+deps=`{rc -x deps $1}
+
+echo $deps
+
+for (i in $1 $deps) {
+	echo "GET $i"
+	hget -v http://9grid.net/rminnich/src/package/packages/$i.iso.bz2 | bunzip2 > $i.iso |[2]aux/statusbar $i
+}
+
+

@@ -1,0 +1,3 @@
+#!/bin/rc
+hget http://9grid.net/rminnich/src/package/deps/$1
+

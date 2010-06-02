@@ -1,0 +1,56 @@
+.TH 9PM 8
+.SH NAME
+deps, get, install, list -- package management
+.SH SYNOPSIS
+.PP
+.B 9pm/9pm
+.PP
+.B 9pm/list
+.I name
+.PP
+.B 9pm/deps
+.I name
+.PP
+.B 9pm/get
+.I name
+.PP
+.B 9pm/install
+.I name
+.SH DESCRIPTION
+These are package management tools for Plan 9. They are designed to be fast (list and deps run in less than a second), reliable, easily restarted, and not produce false positives,
+.I i.e., 
+they will not indicate that a package is installed when it is not. While packages are not easy to remove, they are very easy to reinstall. The package files, lists, and dependencies lists are set up by the 9pm command. 
+.PP
+A comparison with existing replica-based installers is instructive. It currently takes over five 
+.I hours
+to install the openssl library alone using replica. It takes 27 seconds for the get command to pull the .bz2 file down, and another 15-30 seconds to install it. Thus, the 9pm package system is 300 times faster than replica for installing openssl. 
+.PP
+The tools query a web server, 9grid.net, for a list of packages or dependency list. The packages are contained in ISO files at 9grid.net, compressed in bz2 format. When a package is downloaded, it is uncompressed, mounted, and the files copied out with dircp. 
+.PP
+.I list
+produces a list of all available packages. 
+.PP
+Some packages have dependencies. The dependencies themselves may have dependencies. The dependencies form a tree, with the desired package at the root, and packages with no dependencies at the leaves. The 
+.I deps
+command produces a list of dependencies, with the 
+leaves first, and the nodes first. It does not print the 
+root package name. 
+.PP 
+.I get
+gets the named package (i.e. .iso.bz2 files) from 9grid.net and also any packages it depends on, using the deps tool. 
+.I get
+does not check for local copies of the .iso files; new ones are retrieved each time. This might be thought of as a bug but, due to the speed of the operation, we have not found a need to make it too fancy. 
+.PP
+.I install
+installs the .iso files for a given package. It uses the deps command to find a list of packages and, if the packages are not listed in /installed/package, it looks for a .iso to mount and copy files from, using dircp. Note that install does not automagically get the .iso files. The installed directory can be in / or bound into / from some other location. 
+.EE
+.SH SOURCE
+.B /rv/bin/9pm/
+.SH EXAMPLES
+.PP
+Get the package 'hg'
+.PP
+get hg
+.PP
+install hg
+

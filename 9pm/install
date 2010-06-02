@@ -1,0 +1,41 @@
+#!/bin/rc
+
+bad=0
+worktodo=()
+doit=''
+echo package is $1
+
+deps=`{rc deps $1}
+
+for (i in $deps $1) {
+	if (test -f /installed/$i) {
+		echo Package $i already installed, no need to do it
+	}
+	if not {
+		if (test -f $i.iso) {
+			doit = ($doit $i)
+			worktodo=1
+		}
+		if not {
+			echo "You are missing this file: $i"
+			bad=1
+		}
+	}
+}
+
+if (~ $bad 1 ){
+	echo "you had missing files: rerun get $1"
+	exit
+}
+
+# because I don't know how to make an empty list
+if (~ $worktodo 1){
+	 for (i in $doit) {
+		9660srv -f $i.iso $i
+		mount /srv/$i /n/$i
+		dircp /n/$i/root /
+		touch /installed/$i
+	}
+}
+
+echo FINIS

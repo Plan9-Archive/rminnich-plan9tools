@@ -1,0 +1,289 @@
+term% list
+4th
+8169
+82563
+9load-e820
+9win
+X11
+abaco
+aoe
+aoetools
+atazz
+awk
+breakout
+bz2
+cec
+cfront
+cifs
+code2000
+contrib
+cpuid
+curses
+cvs
+cvsfs
+cyberbit
+diff3
+drawvars
+etherm10g
+expat
+find
+fis
+freefont
+freetype
+fs
+g
+geo
+graphviz
+gsvn
+health
+hg
+histogram
+hubfs
+icons
+indent
+iosrv
+iwhois
+jbig
+jpeg
+klondike
+lcms
+ldtrace
+limbo
+m4
+magick
+mail2fs
+mails
+mines
+mkmk
+mkpass
+mkptypes
+mothra
+mpage
+mysqlfs
+ncpfs
+nd
+ndbrequery
+ndbtozone
+nupas
+nvram
+openssh
+openssl
+oui
+palatino
+pci
+perl
+png
+poll
+posix-man
+pppdec
+pptfs
+python
+radar
+rchistclnt
+rchistory
+refer
+regex
+replica
+requery
+rtf2txt
+scheme
+sd
+seft
+smart
+snake
+snmpfs
+spf
+spline
+sqlite3
+srch
+suggest
+syslogdsr
+tags
+target
+tcl
+tex
+tidy
+tiff
+tmac.pm
+ttf2subf
+unifdef
+vblade
+vera
+vim
+wchar
+webphoto
+wintop
+xml2
+yuk
+z
+zonefresh
+term% deps vim
+term% deps tiff
+z
+term% get tiff
+package is tiff
+. /rc/lib/rcmain deps tiff
+flag p
+finit
+flag i
+. deps tiff
+hget http://9grid.net/rminnich/src/package/deps/tiff
+exit ''
+z
+"GET tiff"
+1024 675050
+181011 675050
+338707 675050
+474899 675050
+631571 675050
+"GET z"
+1024 92941
+13947 92941
+term% install tiff
+package is tiff
+Package z already installed, no need to do it
+9660srv 1151: serving /srv/tiff
+FINIS
+term% 
+term% install tiff
+package is tiff
+Package z already installed, no need to do it
+Package tiff already installed, no need to do it
+FINIS
+term% 
+term% ls /installed
+/installed/bz2
+/installed/hg
+/installed/openssl
+/installed/python
+/installed/tiff
+/installed/webphoto
+/installed/z
+term% time list
+4th
+8169
+82563
+9load-e820
+9win
+X11
+abaco
+aoe
+aoetools
+atazz
+awk
+breakout
+bz2
+cec
+cfront
+cifs
+code2000
+contrib
+cpuid
+curses
+cvs
+cvsfs
+cyberbit
+diff3
+drawvars
+etherm10g
+expat
+find
+fis
+freefont
+freetype
+fs
+g
+geo
+graphviz
+gsvn
+health
+hg
+histogram
+hubfs
+icons
+indent
+iosrv
+iwhois
+jbig
+jpeg
+klondike
+lcms
+ldtrace
+limbo
+m4
+magick
+mail2fs
+mails
+mines
+mkmk
+mkpass
+mkptypes
+mothra
+mpage
+mysqlfs
+ncpfs
+nd
+ndbrequery
+ndbtozone
+nupas
+nvram
+openssh
+openssl
+oui
+palatino
+pci
+perl
+png
+poll
+posix-man
+pppdec
+pptfs
+python
+radar
+rchistclnt
+rchistory
+refer
+regex
+replica
+requery
+rtf2txt
+scheme
+sd
+seft
+smart
+snake
+snmpfs
+spf
+spline
+sqlite3
+srch
+suggest
+syslogdsr
+tags
+target
+tcl
+tex
+tidy
+tiff
+tmac.pm
+ttf2subf
+unifdef
+vblade
+vera
+vim
+wchar
+webphoto
+wintop
+xml2
+yuk
+z
+zonefresh
+0.00u 0.00s 0.11r 	 list
+term% time deps hg
+z
+bz2
+openssl
+python
+0.00u 0.00s 0.10r 	 deps hg
+term% 
+

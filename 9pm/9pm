@@ -1,0 +1,86 @@
+#!/bin/rc
+# I run this in /n/sources/contrib/rminnich/package, then I get on 9grid.net 
+# and copy the files there. 
+# for a given package, figure out what it depends on. 
+# package naming is inconsistent, so there are a few hacks to get it right. 
+fn dep {
+	if (test -f $1/dep) {
+		for (dep in `{cat $1/dep}) {
+			# if it has a /, go up 2, else go up 1
+			# the naming is inconsistent because users figure it out, not programs. 
+			# This will be fixed by this little hack. 
+			# package from same contributor?
+			tryme=$1/../$dep
+			tryhim=$1/../../$dep
+			tryany=$1/../../*/$dep
+			if(test -f $tryme/dep) dep $tryme
+			# package from other contributor, and the name is in the dep?
+			if not if(test -f $tryhim/dep) dep $tryhim
+			# ANY contributor?
+			if not if(test -f $tryany/dep) dep $tryany
+			# Then it is 'terminal', i.e. no further dependencies
+			# Echo this last so leaf nodes get listed first. 
+			# Packages get installed in the order in which they're found in the deps file
+			echo $dep
+		}
+	}
+}
+
+pdir=`{pwd}
+packpath=/n/sources/contrib/rminnich/package/packages
+# by doing the for this way we verify the presence of the replica directory. 
+# If no replica directory exists, then we won't even run for that user. 
+# Lazy!
+>/tmp/test
+mkdir p proto deps packages
+rm -f packages/*
+rm -f proto/*
+rm -f deps/*
+for (replica in /n/sources/contrib/*/replica) {
+	echo $replica
+	cd $replica
+	cd ..
+	contributor=`{pwd}
+	echo $contributor
+	root=`{pwd}^/root
+	echo $root
+	pwd
+	for (db in replica/*/db) {
+		echo "DB " $db
+		package=`{echo $db | sed s,/db,, | sed s,replica/,,}
+		echo "Package" $package
+		pwd	
+		# simple at first
+		proto=/n/sources/contrib/rminnich/package/proto/$package
+		# need to adjust things due to mk9660 limitations. 
+		# the directory for a file must be RIGHT BEFORE that file
+		# or the mkfs libraries get upset. So:
+		# x/b
+		# x/b.x
+		# x/b/c
+		# will fail. Has to be
+		# x/b.c
+		# x/b
+		# x/b/c
+		# so to force the right sort order, checi for a mode of 20000000
+		# and turn x/b into x/b/ for sort order, Then stupid libraies
+		# get upset so you have to change the x/b/ back into x/b
+		# yuck. 
+		sed 's/ - 20000000/\/&/' < $db | sort | sed 's/\/ - 20000000/ - 20000000/' > /tmp/db.tmp
+		{echo root - sys sys ; awk  -v 'root='$root '{print "root/"$1 " - " $4 " " $5 }' /tmp/db.tmp }> $proto
+		disk/mk9660 -9cj -p $proto  -s $contributor  /n/sources/contrib/rminnich/package/packages/$package.iso
+		zipresult=`{cd /n/sources/contrib/rminnich/package/packages/; bzip2 $package.iso}
+		#rm /n/sources/contrib/rminnich/package/packages/$package.iso
+		dep $contributor/replica/$package > /n/sources/contrib/rminnich/package/deps/$package
+		pwd
+	}
+}
+
+cd $pdir
+# generate sha1sum, someday
+#for (packages in packages/*) {
+#	sha1sum $package > $package.sha1
+#}
+
+cd proto
+ls > ../list

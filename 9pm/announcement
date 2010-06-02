@@ -1,0 +1,65 @@
+Here is a refinement of fgb's fine work on a contrib system. I have taken his ideas a bit further, based on my use of his tools in an unreliable environment. 
+
+I decided I had a few goals that were not being met, and I am very impressed with how tinycore linux does binary packages. I decided to enumerate what I like about that system, and based on that, what I'd like to have on Plan 9. Not all goals are met but we're close. 
+
+1. reconstitute root file system on boot, then mount packages as file systems, so basic root remains pristine
+2. fast
+3. easy to list package dependencies *quickly*
+4. auto-install of a package and its dependencies
+5. separate package download from install; hence download can proceed in parallel
+6. know what packages are installed quickly and easily
+7. easy to remove a package; just remove one file, reboot, it's gone (see 1)
+   *note*: when your system boots in 10 seconds, reboot is not that big a deal
+8. no false positive: don't think a package is installed when it is not or is only partially done (due to reboot for example)
+9. false negatives are ok: if a package is installed but you don't think it is, reinstallation should be cheap
+10. 
+
+Which of these goals does replica-based packages we have meet, e.g. for /sys/src? 
+From my point of view, none of them. 
+
+Which of these goals does the original contrib system meet? Much as I like the contrib system, because it depends on replica, from my point of view, none of them. In fact, watching it spend four hours to install openssl is kind of embarassing. 
+
+Which of these goals does the gui-based contrib meet? It meets 3, to some extent, but is still too slow; it sort of meets 6; but, unfortunately, it fails on 8. 
+
+Which of these goals does my extension meet? 
+2 -- can download/install all of hg, including all dependencies, in 3 minutes, 2 of which are hget
+3 -- .1 seconds for 'deps hg'
+4
+5 -- get and install are seperate commands
+6 -- ls /package
+8 -- yes -- /package/<name> is only created when the package is completely installed
+
+Here are some examples. 
+
+term% time list
+4th
+8169
+82563
+9load-e820
+9win
+X11
+abaco
+
+(etc.)
+0.00u 0.00s 0.11r 	 list
+term% time deps hg
+z
+bz2
+openssl
+python
+0.00u 0.00s 0.10r 	 deps hg
+
+term% install tiff
+package is tiff
+Package z already installed, no need to do it
+9660srv 1151: serving /srv/tiff
+FINIS
+term% install tiff
+package is tiff
+Package z already installed, no need to do it
+Package tiff already installed, no need to do it
+FINIS
+term%
+
+
+
