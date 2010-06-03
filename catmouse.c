@@ -14,13 +14,43 @@ Tree *catmousetree;
 int verbose;
 int mf;
 int x0, y0, x1, y1, cx, cy;
+int screenfd = -1;
+char screen[128];
+char *fields[6];
 
+void
+screensetup(void)
+{
+	if (screenfd < 0)
+		screenfd = open("/dev/screen", OREAD);
+
+	if (screenfd < 0)
+		exits("no /dev/screen");
+	if (read(screenfd, screen, sizeof screen) < 0)
+		exits("no screen data");
+
+	tokenize(screen, fields, 6);
+
+	x0 = strtoul(fields[1], 0, 0);
+	y0 = strtoul(fields[2], 0, 0);
+	x1 = strtoul(fields[3], 0, 0);
+	y1 = strtoul(fields[4], 0, 0);
+
+}
+
+/* The middle 1/8 is no mans land */
 int map(int x0, int x1, int delta, int where) {
+	int new = where;
 	int half = (x1 - x0) / 2;
-	int b = (where > half? delta : -delta);
-	double f = (1.0/x1-x0);
-	int mod = (where - x0) * f*b;
-	int new = where + mod;
+	int eighth = half / 4;
+	int lside = x0 + half - eighth;
+	int rside = x0 + half + eighth;
+	if (where > rside || where < lside)
+		return where;
+	if (where > lside)
+		new = lside;
+	if (where < rside)
+		new = rside;
 	return new;
 }
 
@@ -73,9 +103,6 @@ void
 main(int argc, char **argv)
 {
 
-	char screen[128];
-	char *fields[6];
-	int fd;
 	ulong flag;
 	char *mtpt;
 	char err[ERRMAX];
@@ -108,19 +135,7 @@ main(int argc, char **argv)
 	err[0] = '\0';
 	errstr(err, sizeof err);
 
-	fd = open("/dev/screen", OREAD);
-	if (fd < 0)
-		exits("no /dev/screen");
-	if (read(fd, screen, sizeof screen) < 0)
-		exits("no screen data");
-
-	tokenize(screen, fields, 6);
-
-	x0 = strtoul(fields[1], 0, 0);
-	y0 = strtoul(fields[2], 0, 0);
-	x1 = strtoul(fields[3], 0, 0);
-	y1 = strtoul(fields[4], 0, 0);
-
+	screensetup();
 	print("%d %d %d %d\n", x0, y0, x1, y1);
 
 	mf = open("/dev/mouse", ORDWR);
