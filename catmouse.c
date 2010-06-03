@@ -9,55 +9,43 @@
 #include <fcall.h>
 #include <thread.h>
 #include <9p.h>
-
+#include <draw.h>
 Tree *catmousetree;
 int verbose;
 int mf;
 int x0, y0, x1, y1, cx, cy;
 int screenfd = -1;
-char screen[128];
 char *fields[6];
 
-void
-screensetup(void)
-{
-	if (screenfd < 0)
-		screenfd = open("/dev/screen", OREAD);
-
-	if (screenfd < 0)
-		exits("no /dev/screen");
-	if (read(screenfd, screen, sizeof screen) < 0)
-		exits("no screen data");
-
-	tokenize(screen, fields, 6);
-
-	x0 = strtoul(fields[1], 0, 0);
-	y0 = strtoul(fields[2], 0, 0);
-	x1 = strtoul(fields[3], 0, 0);
-	y1 = strtoul(fields[4], 0, 0);
-
-}
 
 /* The middle 1/8 is no mans land */
-int map(int x0, int x1, int delta, int where) {
-	int new = where;
-	int half = (x1 - x0) / 2;
-	int eighth = half / 4;
-	int lside = x0 + half - eighth;
-	int rside = x0 + half + eighth;
-	if (where > rside || where < lside)
-		return where;
-	if (where > lside)
-		new = lside;
-	if (where < rside)
-		new = rside;
-	return new;
+Rectangle
+map(int *pcx, int *pcy) {
+	int cx = *pcx;
+	int cy = *pcy;
+	Rectangle in;
+	in = screen->r;
+	in.min.x += 3*Dx(in)/8;
+	in.max.x -= 5*Dx(in)/8;
+	in.min.y += 3*Dy(in)/8;
+	in.max.y -= 5*Dy(in)/8;
+	in = canonrect(in);
+	/* ok, now what do cx and cy look like? */
+	if (cx >in.min.x && cx < in.max.x)
+		cx = in.min.x;
+	if (cy > in.min.y && cy < in.max.y)
+		cy = in.min.y;
+	*pcx = cx;
+	*pcy = cy;
+	return in;
+	
 }
 
 /* the real mouse kind of ignores ofset */
 static void
 fsread(Req *r)
 {
+	Rectangle in;
 	static char m[72], m2[72];
 	char *fields[6];
 	int amt;
@@ -66,7 +54,7 @@ fsread(Req *r)
 		cx = strtol(fields[1], 0, 0);
 		cy = strtol(fields[2], 0, 0);
 		/* now remap */
-		cx = map(x0, x1, 20, cx);
+		in = map(&cx, &cy);
 		memset(m2, 0, sizeof(m2));
 		sprint(m2, "m%11d%12d%12s%12s ", cx, cy, fields[3], fields[4]);
 	write(mf, m2, amt);
@@ -135,8 +123,8 @@ main(int argc, char **argv)
 	err[0] = '\0';
 	errstr(err, sizeof err);
 
-	screensetup();
-	print("%d %d %d %d\n", x0, y0, x1, y1);
+	if (initdraw(0, 0, "catmouse") < 0)
+		sysfatal("initdraw failed");
 
 	mf = open("/dev/mouse", ORDWR);
 	
