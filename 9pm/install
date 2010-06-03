@@ -5,7 +5,7 @@ worktodo=()
 doit=''
 echo package is $1
 
-deps=`{rc deps $1}
+deps=`{rc 9pm/deps $1}
 
 for (i in $deps $1) {
 	if (test -f /installed/$i) {

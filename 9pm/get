@@ -2,7 +2,7 @@
 
 echo package is $1
 
-deps=`{rc -x deps $1}
+deps=`{rc -x 9pm/deps $1}
 
 echo $deps
 
