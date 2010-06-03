@@ -24,26 +24,27 @@ int map(int x0, int x1, int delta, int where) {
 	return new;
 }
 
+/* the real mouse kind of ignores ofset */
 static void
 fsread(Req *r)
 {
 	static char m[72], m2[72];
 	char *fields[6];
-print("off %lld\n", r->ifcall.offset);
-		read(mf, m, sizeof(m));
+	int amt;
+		amt = read(mf, m, sizeof(m));
 		tokenize(m, fields, 5);
 		cx = strtol(fields[1], 0, 0);
 		cy = strtol(fields[2], 0, 0);
 		/* now remap */
 		cx = map(x0, x1, 20, cx);
+		memset(m2, 0, sizeof(m2));
 		sprint(m2, "m%11d%12d%12s%12s ", cx, cy, fields[3], fields[4]);
-write(1, m2, sizeof(m2));
-	write(mf, m2, sizeof(m2));
+	write(mf, m2, amt);
 
-	readstr(r, m2);
-/*
-	r->ofcall.count = r->ifcall.count;
-	strcpy(r->ofcall.data,  m);*/
+	memmove(r->ofcall.data, m2, amt);
+	r->ofcall.count = amt;
+	r->ofcall.offset = 0;
+
 	respond(r, nil);	
 }
 
@@ -79,6 +80,7 @@ main(int argc, char **argv)
 	char *mtpt;
 	char err[ERRMAX];
 	File *f;
+	char *uname;
 
 	mtpt = "/dev";
 	flag = MBEFORE;
@@ -97,8 +99,9 @@ main(int argc, char **argv)
 	if(argc)
 		usage();
 
-	catmousetree = fs.tree = alloctree("glenda", "glenda", DMDIR|0775, nil);
-	f = createfile(catmousetree->root, "mouse", "glenda", 0664, nil);
+	uname = getenv("user");
+	catmousetree = fs.tree = alloctree(uname, uname, DMDIR|0775, nil);
+	f = createfile(catmousetree->root, "mouse", uname, 0664, nil);
 	if(f == nil)
 		sysfatal("creating %s: %r", "mouse");
 
