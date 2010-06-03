@@ -45,12 +45,12 @@ does not check for local copies of the .iso files; new ones are retrieved each t
 installs the .iso files for a given package. It uses the deps command to find a list of packages and, if the packages are not listed in /installed/package, it looks for a .iso to mount and copy files from, using dircp. Note that install does not automagically get the .iso files. The installed directory can be in / or bound into / from some other location. 
 .EE
 .SH SOURCE
-.B /rv/bin/9pm/
+.B /rc/bin/9pm/
 .SH EXAMPLES
 .PP
 Get the package 'hg'
 .PP
-get hg
+9pm/get hg
 .PP
-install hg
+9pm/install hg
 
