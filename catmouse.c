@@ -21,15 +21,22 @@ char *fields[6];
 /* The middle 1/8 is no mans land */
 Rectangle
 map(int *pcx, int *pcy) {
+	/* just make an inset. Not exactly what we wanted, but ok */
+	int insetsize;
+	Point p;
 	int cx = *pcx;
 	int cy = *pcy;
 	Rectangle in;
 	in = screen->r;
-	in.min.x += 3*Dx(in)/8;
-	in.max.x -= 5*Dx(in)/8;
-	in.min.y += 3*Dy(in)/8;
-	in.max.y -= 5*Dy(in)/8;
-	in = canonrect(in);
+	insetsize = Dx(screen->r);
+	if (Dy(screen->r) < insetsize)
+		insetsize = Dy(screen->r);
+	insetsize = (insetsize * 3)/8;
+	in = insetrect(screen->r, insetsize);;
+	p.x = cx;
+	p.y = cy;
+	if (! ptinrect(p, in))
+		return in;
 	/* ok, now what do cx and cy look like? */
 	if (cx >in.min.x && cx < in.max.x)
 		cx = in.min.x;
@@ -41,7 +48,7 @@ map(int *pcx, int *pcy) {
 	
 }
 
-/* the real mouse kind of ignores ofset */
+/* the real mouse kind of ignores offset */
 static void
 fsread(Req *r)
 {
