@@ -32,7 +32,7 @@ packpath=/n/sources/contrib/rminnich/package/packages
 # If no replica directory exists, then we won't even run for that user. 
 # Lazy!
 >/tmp/test
-mkdir p proto deps packages
+mkdir -p proto deps packages
 rm -f packages/*
 rm -f proto/*
 rm -f deps/*
