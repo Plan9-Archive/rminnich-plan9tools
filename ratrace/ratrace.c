@@ -160,7 +160,7 @@ threadmain(int argc, char **argv)
 		}
 	} else {
 		if(argc != 1)
-			sysfatal("usage");
+			usage();
 		pid = atoi(argv[0]);
 	}
 
