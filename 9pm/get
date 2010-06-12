@@ -8,7 +8,7 @@ echo $deps
 
 for (i in $1 $deps) {
 	echo "GET $i"
-	hget -v http://9grid.net/rminnich/src/package/packages/$i.iso.bz2 | bunzip2 > $i.iso |[2]aux/statusbar $i
+	hget -v http://9grid.net/rminnich/src/package/packages/$i.iso.bz2 | bunzip2 > /tmp/$i.iso |[2]aux/statusbar $i
 }
 
 

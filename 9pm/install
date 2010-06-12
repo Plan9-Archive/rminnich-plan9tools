@@ -12,7 +12,7 @@ for (i in $deps $1) {
 		echo Package $i already installed, no need to do it
 	}
 	if not {
-		if (test -f $i.iso) {
+		if (test -f /tmp/$i.iso) {
 			doit = ($doit $i)
 			worktodo=1
 		}
@@ -31,7 +31,7 @@ if (~ $bad 1 ){
 # because I don't know how to make an empty list
 if (~ $worktodo 1){
 	 for (i in $doit) {
-		9660srv -f $i.iso $i
+		9660srv -f /tmp/$i.iso $i
 		mount /srv/$i /n/$i
 		dircp /n/$i/root /
 		touch /installed/$i
