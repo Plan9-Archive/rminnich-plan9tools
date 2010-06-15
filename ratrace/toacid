@@ -1,0 +1,3 @@
+#!/bin/rc
+sed 's/"/\\"/g' | awk '{printf "print (" ""; printf "pcfile(%s),srcline(%s),", $4, $4; for (i=1;i<=NF; i++) if (i != 4) printf "\" %s\",", $i" "; print(")")}' | acid $1
+
