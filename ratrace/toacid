@@ -1,3 +1,3 @@
 #!/bin/rc
-sed 's/"/\\"/g' | awk '{printf "print (" ""; printf "pcfile(%s),srcline(%s),", $4, $4; for (i=1;i<=NF; i++) if (i != 4) printf "\" %s\",", $i" "; print(")")}' | acid $1
+sed 's/"/\\"/g' | awk '{printf "printto(\"/fd/2\", " ""; printf "pcfile(%s), \":\", pcline(%s),\" \", srcline(%s),", $4, $4,$4; for (i=1;i<=NF; i++) if (i != 4) printf "\" %s\",", $i" "; print(")")}' | acid $1>/dev/null
 
