@@ -126,7 +126,7 @@ done:
 
 void
 usage(void){
-	fprint(2, "Usage: syscalltrace [-c cmd] [pid] (one of these is required)\n");
+	fprint(2, "Usage: ratrace [-c cmd [args]] [pid] (one of these is required)\n");
 	exits("usage");
 }
 
@@ -137,14 +137,19 @@ threadmain(int argc, char **argv)
 	char *cmd = nil;
 	char **args = nil;
 
-	ARGBEGIN{
-	case 'c':
-		cmd = strdup(EARGF(usage()));
-		args = argv;
-		break;
-	default:
-		usage();
-	}ARGEND;
+	/* don't bother with fancy arg processing, because it picks up switches for the 
+	* argument you are starting. Just check for -c as argv[1] and then take it from there.
+	*/
+	if (argv[1][0] == '-') {
+		switch(argv[1][1]) {
+		case 'c':
+			cmd = strdup(argv[2]);
+			args = &argv[2];
+			break;
+		default:
+			usage();
+		}
+	}
 
 	/* run a command? */
 	if(cmd) {
